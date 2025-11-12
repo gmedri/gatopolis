@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background-light text-gray-900 antialiased;
+  }
+}
+
+@layer utilities {
+  .snap-section {
+    @apply min-h-fit;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-pink to-primary-coral bg-clip-text text-transparent;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+}

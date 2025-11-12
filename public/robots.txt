@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+
+Sitemap: https://gatopolis.com.br/sitemap.xml
