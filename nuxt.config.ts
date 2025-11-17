@@ -19,12 +19,12 @@ export default defineNuxtConfig({
       'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
       'Content-Security-Policy': [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
         "style-src 'self' 'unsafe-inline'",
         "img-src 'self' data: https: blob:",
         "font-src 'self' data:",
-        "connect-src 'self' https://wa.me",
-        "frame-src 'none'",
+        "connect-src 'self' https://wa.me https://www.google-analytics.com https://www.googletagmanager.com",
+        "frame-src 'self' https://www.googletagmanager.com",
         "object-src 'none'",
         "base-uri 'self'"
       ].join('; ')
@@ -61,6 +61,15 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ],
+      script: [
+        {
+          children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MX2VSNVB');`
+        }
       ]
     }
   },
