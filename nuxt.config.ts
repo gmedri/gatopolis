@@ -6,11 +6,6 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
-    preset: 'static',
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    },
     headers: {
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'SAMEORIGIN',
@@ -66,7 +61,6 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: 'ipxStatic',
     format: ['webp', 'png', 'jpg'],
     quality: 80,
     screens: {
