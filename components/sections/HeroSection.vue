@@ -4,7 +4,11 @@ import { openWhatsApp } from '~/utils/whatsapp'
 const { offsetY } = useParallax({ speed: 0.5, maxOffset: 100 })
 
 const handleCTAClick = () => {
-  openWhatsApp('Olá! Gostaria de agendar uma consulta para o meu gato.')
+  openWhatsApp('Olá! Gostaria de agendar uma consulta para o meu gato.', {
+    buttonId: 'hero_cta',
+    buttonText: 'Agendar Consulta',
+    clickLocation: 'hero_section'
+  })
 }
 </script>
 

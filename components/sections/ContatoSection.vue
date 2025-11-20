@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getContactInfo } from '~/utils/constants'
 import { openWhatsApp } from '~/utils/whatsapp'
+import { trackFormSubmission } from '~/utils/gtm'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const contactInfo = getContactInfo()
@@ -78,13 +79,19 @@ const handleSubmit = async (event: Event) => {
   try {
     const { name, phone, message } = form.value
 
+    trackFormSubmission('contact_form', 'Contato Gatópolis')
+
     const whatsappMessage = `Olá! Vim pelo site da Gatópolis e gostaria de mais informações.
 
 Nome: ${name}
 Telefone: ${phone}
 Mensagem: ${message}`
 
-    openWhatsApp(whatsappMessage)
+    openWhatsApp(whatsappMessage, {
+      buttonId: 'contact_form_whatsapp',
+      buttonText: 'Enviar via WhatsApp',
+      clickLocation: 'contact_form'
+    })
 
     form.value = {
       name: '',

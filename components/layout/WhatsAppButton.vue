@@ -2,7 +2,11 @@
 import { openWhatsApp } from '~/utils/whatsapp'
 
 const handleClick = () => {
-  openWhatsApp()
+  openWhatsApp(undefined, {
+    buttonId: 'floating_whatsapp',
+    buttonText: 'WhatsApp Flutuante',
+    clickLocation: 'floating_button'
+  })
 }
 </script>
 

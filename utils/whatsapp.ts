@@ -1,4 +1,5 @@
 import { getContactInfo } from './constants'
+import { trackWhatsAppClick } from './gtm'
 
 const MAX_MESSAGE_LENGTH = 500
 
@@ -19,8 +20,18 @@ export const generateWhatsAppUrl = (message?: string): string => {
   return `https://wa.me/${contactInfo.whatsapp}?text=${encodedMessage}`
 }
 
-export const openWhatsApp = (message?: string): void => {
+interface WhatsAppTrackingOptions {
+  buttonId: string
+  buttonText: string
+  clickLocation: string
+}
+
+export const openWhatsApp = (message?: string, tracking?: WhatsAppTrackingOptions): void => {
   if (typeof window === 'undefined') return
+
+  if (tracking) {
+    trackWhatsAppClick(tracking.buttonId, tracking.buttonText, tracking.clickLocation)
+  }
 
   const url = generateWhatsAppUrl(message)
   const opened = window.open(url, '_blank', 'noopener,noreferrer')
